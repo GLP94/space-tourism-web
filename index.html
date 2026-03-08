@@ -1,41 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&family=Bellefair&family=Barlow:wght@400;700&display=swap" rel="stylesheet">  
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&family=Bellefair&family=Barlow:wght@400;700&display=swap"
+      rel="stylesheet">
   <link rel="stylesheet" href="stylesheet.css">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
   <title>Frontend Mentor | Space tourism website</title>
 </head>
-<body>
-  <div class="container">
-    <nav class="flex">
-      <img src="./assets/shared/logo.svg" alt="Logo"></img>
-      <button id="hamburger"><img src="./assets/shared/icon-hamburger.svg"></button>
-      <div class="menu flex flow underline hidden">
-        <button id="close"><img src="./assets/shared/icon-close.svg"></button>
-        <a aria-selected="true" class="numbered-title text-white"><span>00</span> Home</a>
-        <a aria-selected="false" class="numbered-title text-white"><span>01</span> Destination</a>
-        <a aria-selected="false" class="numbered-title text-white"><span>02</span> Crew</a>
-        <a aria-selected="false" class="numbered-title text-white"><span>03</span> Technology</a>
-      </div>
-    </nav>
 
-    <main class="flex">
-      <div>
-        <span class="text-white uppercase ff-sans-cond">So, you want to travel to</span>
-        <h1 class="text-white fs-800 ff-serif uppercase">Space</h1>
-        <p class="text-white ff-sans-cond">Let’s face it; if you want to go to space, you might as well genuinely go to 
-        outer space and not hover kind of on the edge of it. Well sit back, and relax 
-        because we’ll give you a truly out of this world experience!</p>
-      </div>
-  
-      <button class="large-button">Explore</button>
-    </main>
-    <script src="script.js"></script>
-  </div>
+<body>
+  <header class="flex">
+    <div>
+      <img src="./assets/shared/logo.svg" alt="Logo"></img>
+    </div>
+    <button class="hamburger"><img src="./assets/shared/icon-hamburger.svg"></button>
+    <nav class="menu flex flow underline hidden">
+      <button class="close"><img src="./assets/shared/icon-close.svg"></button>
+      <a href="#" aria-selected="true" class="numbered-title text-white"><span>00</span> Home</a>
+      <a href="#" aria-selected="false" class="numbered-title text-white"><span>01</span> Destination</a>
+      <a href="#" aria-selected="false" class="numbered-title text-white"><span>02</span> Crew</a>
+      <a href="#" aria-selected="false" class="numbered-title text-white"><span>03</span> Technology</a>
+    </nav>
+  </header>
+
+  <main class="container flex" style="--gap: 9em">
+    <div class="flow" style="--flow-space: 2em">
+      <h1 class="text-accent uppercase fs-200 ff-sans-cond letter-spacing-3" style="font-weight: 400;">So, you want to travel to 
+        <span class="text-white block fs-800 ff-serif" style="margin-top: 0.25em">Space</span>
+      </h1>
+      <p class="text-accent ff-sans-cond">
+        Let’s face it; if you want to go to space, you might as well genuinely go to
+        outer space and not hover kind of on the edge of it. Well sit back, and relax
+        because we’ll give you a truly out of this world experience!
+      </p>
+    </div>
+
+    <a class="large-button uppercase ff-serif fs-600 bg-white" style="padding: 1em">Explore</a>
+  </main>
+  <script src="script.js"></script>
 </body>
+
 </html>

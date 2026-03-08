@@ -1,5 +1,5 @@
-const closeBtn = document.getElementById("close");
-const hamburger = document.getElementById("hamburger");
+const closeBtn = document.querySelector(".close");
+const hamburger = document.querySelector(".hamburger");
 const menu = document.querySelector(".menu");
 
 function onClose() {
