@@ -5,7 +5,7 @@
     --white: 0 0% 100%;
 
     /* Font Sizes */
-    --fs-900: 9.375rem;
+    --fs-900: clamp(5rem, 8vw + 1rem, 9.375rem);
     --fs-800: 6.25rem;
     --fs-700: 3.5rem;
     --fs-600: 2rem;
@@ -60,6 +60,10 @@ ol[role='list']{
 body{
     min-height: 100vh;
     line-height: 1.5;
+    font-size: var( --fs-400);
+    color: var( --white );
+    display: grid;
+    grid-template-rows: min-content 1fr;
 }
 
 h1,
@@ -133,10 +137,40 @@ picture{
     gap: var(--gap, 1rem);
 }
 
+.inline-grid{
+    display: inline-grid;
+    gap: var(--gap, 1rem);
+}
+
 .container{
     padding: 2em;
     margin: 0 auto;
     max-width: 80rem;
+}
+
+.container-grid{
+    display: grid;
+    place-items: center;
+}
+
+.container-grid > *:first-child,
+.container-grid > *:last-child {
+    grid-column: 2;
+}
+
+@media (width > 768px){
+    .container-grid{
+        gap: var(--gap, 2rem);
+        grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0px, 30rem)) minmax(2rem, 1fr);
+    }
+
+    .container-grid > *:first-child{
+        grid-column: 2;
+    }
+
+    .container-grid > *:last-child{
+        grid-column: 3;
+    }
 }
 
 .sr-only{
@@ -203,12 +237,12 @@ picture{
 }
 
 .numbered-title span {
-    margin-right: .5em;
+    margin-right: .25em;
     font-weight: 700;
-    color: hsl( var(--clr-white) / .25);
 }
 
 .large-button {
+    font-size: 2rem;
     position: relative;
     display: inline-grid;
     z-index: 1;
@@ -224,10 +258,10 @@ picture{
     z-index: -1;
     width: 100%;
     height: 100%;
-    border-radius: inherit;
-    transform: scale(1);
+    border-radius: 50%;
+    background: hsl( var(--white) / .25);
     opacity: 0;
-    transition: opacity 300ms linear, transform 750ms ease-in-out;
+    transition: opacity 300ms linear, transform 400ms ease-in-out;
 }
 
 .large-button:hover::after,
@@ -240,19 +274,21 @@ picture{
     background: transparent;
     border: none;
     cursor: pointer;
-    margin: 1em 2em 3em 0;
     align-self: flex-end;
+    margin: 3rem 2rem;
 }
 
 .hamburger{
-    border: 0;
+    border: none;
     background-color: transparent;
+    cursor: pointer;
     aspect-ratio: 1;
+    place-self: center;
 }
 
 /* Background */
 
-body {
+.background {
     background: url("./assets/home/background-home-mobile.jpg");
     background-repeat: no-repeat;
     background-size:cover;
@@ -260,7 +296,7 @@ body {
 }
 
 @media (width > 425px) {
-    body {
+    .background {
         background: url("./assets/home/background-home-tablet.jpg");
         background-repeat: no-repeat;
         background-size:cover;
@@ -269,7 +305,7 @@ body {
 }
 
 @media (width > 1024px) {
-    body {
+    .background {
         background: url("./assets/home/background-home-desktop.jpg");
         background-repeat: no-repeat;
         background-size:cover;
@@ -277,7 +313,7 @@ body {
     }
 }
 
-/* Navigation bar */
+/* Navigation Bar */
 
 header{
     justify-content:space-between;
@@ -293,9 +329,12 @@ header{
     flex-direction: column;
     background-color: hsl( var(--white) / .10);
     backdrop-filter: blur(50px);
-    padding: 2em 0 0 2em;
     transform: translateX(0);
     transition: transform 0.6s ease-in-out;
+}
+
+.menu a {
+    padding: 0 2em;
 }
 
 .hidden {
@@ -316,20 +355,39 @@ header{
 
     .menu{
         position: relative;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
         flex-direction: row;
-        padding: 0;
-        width: 90%;
+        width: 80%;
         gap: 2rem;
-        justify-content: center;
     }
 
     .menu a {
-        padding: 2rem 0;
+        padding: 1rem 0;
     }
 
-    header div img{
-        padding: 2rem;
+    header div img {
+        padding: 1rem 2rem;
+    } 
+
+
+}
+
+@media (width > 768px) {
+    .menu{
+        margin-top: 2rem;
+        height: 7rem;
+        max-width: 60%;
     }
+
+    .menu a {
+        padding: 2.25rem 0;
+    }
+
+    header div img {
+        padding: 4rem 2rem 0 2rem;
+    } 
 }
 
 .underline{
@@ -351,7 +409,7 @@ header{
     border-bottom: 2px solid hsl( var(--white) );
 }
 
-@media (width <= 375px){
+@media (width <= 425px){
     .underline > *:where(:not(button)){
         border-bottom: none;
         border-right: 2px solid transparent;
@@ -372,9 +430,14 @@ header{
 
 /* main */
 
+body > * {
+    border: 1px solid green;
+}
+
 main{
     flex-direction: column;
     align-items: center;
+    margin-top: 2rem;
 }
 
 main > *:where(:first-child) {

@@ -13,7 +13,7 @@
   <title>Frontend Mentor | Space tourism website</title>
 </head>
 
-<body>
+<body class="background">
   <header class="flex">
     <div>
       <img src="./assets/shared/logo.svg" alt="Logo"></img>
@@ -28,10 +28,10 @@
     </nav>
   </header>
 
-  <main class="container flex" style="--gap: 9em">
+  <main class="container-grid">
     <div class="flow" style="--flow-space: 2em">
       <h1 class="text-accent uppercase fs-200 ff-sans-cond letter-spacing-3" style="font-weight: 400;">So, you want to travel to 
-        <span class="text-white block fs-800 ff-serif" style="margin-top: 0.25em">Space</span>
+        <span class="text-white block fs-900 ff-serif" style="margin-top: 0.25em">Space</span>
       </h1>
       <p class="text-accent ff-sans-cond">
         Let’s face it; if you want to go to space, you might as well genuinely go to
@@ -40,8 +40,11 @@
       </p>
     </div>
 
-    <a class="large-button uppercase ff-serif fs-600 bg-white" style="padding: 1em">Explore</a>
+    <div style="display: inline-flex">
+        <a class="large-button uppercase ff-serif bg-white" style="padding: 1em">Explore</a>
+    </div>
   </main>
+  
   <script src="script.js"></script>
 </body>
 
