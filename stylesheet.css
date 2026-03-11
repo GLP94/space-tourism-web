@@ -6,13 +6,13 @@
 
     /* Font Sizes */
     --fs-900: clamp(5rem, 8vw + 1rem, 9.375rem);
-    --fs-800: 6.25rem;
-    --fs-700: 3.5rem;
-    --fs-600: 2rem;
-    --fs-500: 1.75rem;
-    --fs-400: 1.125rem;
+    --fs-800: clamp(3.5rem, 6vw + 1rem, 6.25rem);
+    --fs-700: clamp(2.5rem, 4vw + 1rem, 3.5rem);
+    --fs-600: clamp(1.5rem, 2vw + 1rem, 2rem);
+    --fs-500: clamp(1.25rem, 1vw + 1rem, 1.75rem);
+    --fs-400: clamp(1rem, 0.5vw + 1rem, 1.125rem);
     --fs-300: 1rem;
-    --fs-200: 0.875rem;
+    --fs-200: clamp(0.75rem, 0.2vw + 0.8rem, 0.875rem);
 
     /* Font Families */
     --ff-serif: "Bellefair", serif;
@@ -137,11 +137,6 @@ picture{
     gap: var(--gap, 1rem);
 }
 
-.inline-grid{
-    display: inline-grid;
-    gap: var(--gap, 1rem);
-}
-
 .container{
     padding: 2em;
     margin: 0 auto;
@@ -149,19 +144,28 @@ picture{
 }
 
 .container-grid{
+    text-align: center;
     display: grid;
     place-items: center;
 }
 
-.container-grid > *:first-child,
-.container-grid > *:last-child {
-    grid-column: 2;
+.container-grid * {
+    max-width: 25rem;
 }
 
-@media (width > 768px){
+@media (width > 425px) {
+    .container-grid {
+        margin-top: 5rem;
+    }
+}
+
+@media (width > 1024px){
     .container-grid{
-        gap: var(--gap, 2rem);
-        grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0px, 30rem)) minmax(2rem, 1fr);
+        gap: 10rem;
+        padding-bottom: 8rem;
+        align-items: end;
+        text-align: left;
+        grid-template-columns: minmax(0px, 1fr) repeat(2, minmax(0px, 30rem)) minmax(0px, 1fr);
     }
 
     .container-grid > *:first-child{
@@ -242,17 +246,19 @@ picture{
 }
 
 .large-button {
+    padding: 2rem;
     font-size: 2rem;
     position: relative;
-    display: inline-grid;
-    z-index: 1;
+    display: grid;
     place-items: center;
+    z-index: 1;
     aspect-ratio: 1;
     text-decoration: none;
     border-radius: 50%;
 }
 
 .large-button::after {
+    font-size: 2rem;
     content: "";
     position: absolute;
     z-index: -1;
@@ -262,6 +268,12 @@ picture{
     background: hsl( var(--white) / .25);
     opacity: 0;
     transition: opacity 300ms linear, transform 400ms ease-in-out;
+}
+
+@media (width > 425px){
+    .large-button {
+        padding: 3rem;
+    }
 }
 
 .large-button:hover::after,
@@ -292,6 +304,7 @@ picture{
     background: url("./assets/home/background-home-mobile.jpg");
     background-repeat: no-repeat;
     background-size:cover;
+    background-position: center;
     padding: 2rem;
 }
 
@@ -300,6 +313,7 @@ picture{
         background: url("./assets/home/background-home-tablet.jpg");
         background-repeat: no-repeat;
         background-size:cover;
+        background-position: center;
         padding: 0;
     }
 }
@@ -309,6 +323,7 @@ picture{
         background: url("./assets/home/background-home-desktop.jpg");
         background-repeat: no-repeat;
         background-size:cover;
+        background-position: center;
         padding: 0;
     }
 }
@@ -359,35 +374,13 @@ header{
         justify-content: flex-end;
         align-items: center;
         flex-direction: row;
-        width: 80%;
+        width: fit-content;
         gap: 2rem;
     }
 
     .menu a {
-        padding: 1rem 0;
+        padding: 1em 0;
     }
-
-    header div img {
-        padding: 1rem 2rem;
-    } 
-
-
-}
-
-@media (width > 768px) {
-    .menu{
-        margin-top: 2rem;
-        height: 7rem;
-        max-width: 60%;
-    }
-
-    .menu a {
-        padding: 2.25rem 0;
-    }
-
-    header div img {
-        padding: 4rem 2rem 0 2rem;
-    } 
 }
 
 .underline{
@@ -426,24 +419,4 @@ header{
         border-bottom: none;
         border-right: 2px solid hsl( var(--white) );
     }
-}
-
-/* main */
-
-body > * {
-    border: 1px solid green;
-}
-
-main{
-    flex-direction: column;
-    align-items: center;
-    margin-top: 2rem;
-}
-
-main > *:where(:first-child) {
-    margin-top: 2em;
-}
-
-main * {
-    text-align: center;
 }
