@@ -161,11 +161,10 @@ picture{
 
 @media (width > 1024px){
     .container-grid{
-        gap: 10rem;
         padding-bottom: 8rem;
         align-items: end;
         text-align: left;
-        grid-template-columns: minmax(0px, 1fr) repeat(2, minmax(0px, 30rem)) minmax(0px, 1fr);
+        grid-template-columns: minmax(0, 1fr) repeat(2, minmax(0, 50rem)) minmax(0, 1fr);
     }
 
     .container-grid > *:first-child{
@@ -282,12 +281,40 @@ picture{
     transform: scale(1.5);
 }
 
+/* Background */
+
+.background {
+    background: url("./assets/home/background-home-mobile.jpg");
+    background-size: cover;
+    background-position: bottom center;
+    padding: 2rem;
+}
+
+@media (width > 425px) {
+    .background {
+        background: url("./assets/home/background-home-tablet.jpg");
+        background-size: cover;
+        background-position: center center;
+        padding: 0;
+    }
+}
+
+@media (width > 1024px) {
+    .background {
+        background: url("./assets/home/background-home-desktop.jpg");
+        background-size: cover;
+        background-position: center center;
+    }
+}
+
+/* Navigation Bar */
+
 .close{
     background: transparent;
     border: none;
     cursor: pointer;
     align-self: flex-end;
-    margin: 3rem 2rem;
+    padding: 2rem;
 }
 
 .hamburger{
@@ -297,38 +324,6 @@ picture{
     aspect-ratio: 1;
     place-self: center;
 }
-
-/* Background */
-
-.background {
-    background: url("./assets/home/background-home-mobile.jpg");
-    background-repeat: no-repeat;
-    background-size:cover;
-    background-position: center;
-    padding: 2rem;
-}
-
-@media (width > 425px) {
-    .background {
-        background: url("./assets/home/background-home-tablet.jpg");
-        background-repeat: no-repeat;
-        background-size:cover;
-        background-position: center;
-        padding: 0;
-    }
-}
-
-@media (width > 1024px) {
-    .background {
-        background: url("./assets/home/background-home-desktop.jpg");
-        background-repeat: no-repeat;
-        background-size:cover;
-        background-position: center;
-        padding: 0;
-    }
-}
-
-/* Navigation Bar */
 
 header{
     justify-content:space-between;
@@ -341,15 +336,12 @@ header{
     top: 0;
     right: 0;
     z-index: 2;
+    padding: 1rem 0 0 2rem;
     flex-direction: column;
-    background-color: hsl( var(--white) / .10);
-    backdrop-filter: blur(50px);
+    background-color: hsl( var(--white) / .05);
+    backdrop-filter: blur(3rem);
     transform: translateX(0);
     transition: transform 0.6s ease-in-out;
-}
-
-.menu a {
-    padding: 0 2em;
 }
 
 .hidden {
@@ -383,10 +375,6 @@ header{
     }
 }
 
-.underline{
-    transition: all 0.4s ease-in-out;
-}
-
 .underline > *:where(:not(button)){
     border-bottom: 2px solid transparent;
     text-decoration: none;
@@ -403,19 +391,19 @@ header{
 }
 
 @media (width <= 425px){
-    .underline > *:where(:not(button)){
+    .menu.underline > *:where(:not(button)){
         border-bottom: none;
         border-right: 2px solid transparent;
         text-decoration: none;
     }
 
-    .underline > *:where(:not(button)):hover,
-    .underline > *:where(:not(button)):focus {
+    .menu.underline > *:where(:not(button)):hover,
+    .menu.underline > *:where(:not(button)):focus {
         border-bottom: none;
         border-right: 2px solid hsl( var(--white) / .25 );
     }
 
-    .underline > [aria-selected="true"]{
+    .menu.underline > [aria-selected="true"]{
         border-bottom: none;
         border-right: 2px solid hsl( var(--white) );
     }
