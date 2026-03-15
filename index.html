@@ -11,15 +11,16 @@
   <link rel="stylesheet" href="stylesheet.css">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
   <title>Frontend Mentor | Space tourism website</title>
+  <script src="script.js" defer></script>
 </head>
 
 <body class="background">
   <header class="flex">
-    <div>
+    <div class="logo">
       <a href="index.html"><img src="./assets/shared/logo.svg" alt="Logo"></img></a>
     </div>
     <button class="hamburger"><img src="./assets/shared/icon-hamburger.svg"></button>
-    <nav class="menu flex flow underline hidden">
+    <nav class="menu flex flow hidden underline hidden">
       <button class="close"><img src="./assets/shared/icon-close.svg"><span class="sr-only">Menu</span></button>
       <a href="#" aria-selected="true" class="numbered-title text-white"><span>00</span> Home</a>
       <a href="#" aria-selected="false" class="numbered-title text-white"><span>01</span> Destination</a>
@@ -40,12 +41,10 @@
       </p>
     </div>
 
-    <div style="display: inline-flex">
-        <a class="large-button uppercase ff-serif bg-white">Explore</a>
+    <div>
+        <a class="large-button uppercase ff-serif text-dark bg-white">Explore</a>
     </div>
   </main>
-  
-  <script src="script.js"></script>
 </body>
 
 </html>
