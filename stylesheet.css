@@ -330,7 +330,7 @@ picture{
     cursor: pointer;
     aspect-ratio: 1;
     place-self: center;
-    margin: 2rem;
+    margin: clamp(1.5rem, 5vw, 3.5rem);
 }
 
 header{
@@ -338,7 +338,7 @@ header{
 }
 
 .logo {
-    margin: 2rem;
+    margin: 1.5rem clamp(1.5rem, 5vw, 3.5rem);
 }
 
 .menu{
@@ -359,6 +359,10 @@ header{
     transform: translateX(100%)
 }
 
+.menu a > span{
+    display: none;
+}
+
 @media (width > 425px) {
     .close,
     .hamburger {
@@ -372,16 +376,28 @@ header{
 
     .menu{
         position: relative;
+        gap: 0.1rem;
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
         align-items: center;
         flex-direction: row;
-        width: fit-content;
-        gap: 2rem;
+        height: auto;
+        width: 100%;
+        padding: 0 4rem;
     }
 
-    .menu a {
-        padding: 1em 0;
+    .menu a{
+        padding: 1.3rem 0;
+    }
+}
+
+@media (width > 1024px) {
+    .logo {
+        margin: 3.5rem clamp(1.5rem, 5vw, 3.5rem);
+    }
+
+    .headerNumber{
+        display: inline;
     }
 }
 
