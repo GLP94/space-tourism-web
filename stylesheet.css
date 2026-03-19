@@ -12,7 +12,7 @@
     --fs-500: clamp(0.95rem, 1vw + 1rem, 1.75rem);
     --fs-400: clamp(0.75rem, 0.5vw + 1rem, 1.125rem);
     --fs-300: 1rem;
-    --fs-200: 0.8rem
+    --fs-200: 0.8rem;
 
     /* Font Families */
     --ff-serif: "Bellefair", serif;
@@ -154,13 +154,13 @@ picture{
     max-width: 27rem;
 }
 
-@media (width > 425px) {
+@media (width > 40rem) {
     .container-grid {
         margin-top: 5rem;
     }
 }
 
-@media (width > 1024px){
+@media (width > 60rem){
     .container-grid{
         padding-bottom: 8rem;
         align-items: end;
@@ -236,13 +236,13 @@ picture{
 
 .numbered-title {
     font-family: var(--ff-sans-cond);
-    font-size: var(--fs-200);
+    font-size: var(--fs-500);
     text-transform: uppercase;
     letter-spacing: 4.72px; 
 }
 
 .numbered-title span {
-    margin-right: .25em;
+    margin-right: .5em;
     font-weight: 700;
 }
 
@@ -271,13 +271,13 @@ picture{
     transition: opacity 300ms linear, transform 400ms ease-in-out;
 }
 
-@media (width > 425px){
+@media (width > 40rem){
     .large-button {
         padding: 3rem;
     }
 }
 
-@media (width > 1024px){
+@media (width > 60rem){
     .large-button {
         padding: 4rem;
         margin-bottom: 1rem;
@@ -298,7 +298,7 @@ picture{
     background-position: bottom center;
 }
 
-@media (width > 425px) {
+@media (width > 40rem) {
     .background {
         background: url("./assets/home/background-home-tablet.jpg");
         background-size: cover;
@@ -306,7 +306,7 @@ picture{
     }
 }
 
-@media (width > 1024px) {
+@media (width > 60rem) {
     .background {
         background: url("./assets/home/background-home-desktop.jpg");
         background-size: cover;
@@ -343,57 +343,84 @@ header{
 
 .menu{
     position: fixed;
+    white-space: nowrap;
     right: 0;
     z-index: 2;
     padding: 0 0 0 2rem;
     height: 100%;
-    width: 15rem;
+    width: 14rem;
     flex-direction: column;
     background-color: hsl( var(--white) / .05);
     backdrop-filter: blur(3rem);
-    transform: translateX(0);
+    transform: translateX(100%);
     transition: transform 0.6s ease-in-out;
 }
 
-.hidden {
-    transform: translateX(100%)
+.menu a > span {
+    margin-right: .5em;
+    font-weight: 700;
 }
 
-.menu a > span{
-    display: none;
+.appear {
+    transform: translateX(0);
 }
 
-@media (width > 425px) {
+@media (width > 40rem) {
     .close,
     .hamburger {
         display: none;
     }
 
-    .hidden {
-        display: flex;
-        transform: translateX(0);
-    }
-
     .menu{
         position: relative;
-        gap: 0.1rem;
-        display: flex;
+        transform: translateX(0);
         justify-content: space-between;
         align-items: center;
         flex-direction: row;
         height: auto;
-        width: 100%;
-        padding: 0 4rem;
+        width: auto;
+        --gap: clamp(1.5rem, 5vw, 3rem);
+        padding: 0 clamp(2rem, 6vw, 10rem);
     }
 
     .menu a{
-        padding: 1.3rem 0;
+        padding: 2rem 0;
+        margin: 0;
+    }
+
+    .menu a > span{
+        display: none;
     }
 }
 
-@media (width > 1024px) {
-    .logo {
-        margin: 3.5rem clamp(1.5rem, 5vw, 3.5rem);
+@media (width > 60rem) {
+    header{
+        --gap: none;
+        margin: 2rem 0;
+        position: relative;
+        align-items: center;
+    }
+
+    header::before{
+        content: "";
+        display: block;
+        position: relative;
+        right: 0;
+        order: 1;
+        background-color: hsl( var(--white) / .10);
+        height: 1px;
+        z-index: 3;
+        width: 100%;
+        margin-right: -2.5rem;
+        margin-left: 4rem;
+    }
+
+    .menu {
+        order: 2;
+    }
+
+    .menu a > span{
+        display: inline;
     }
 
     .headerNumber{
@@ -416,7 +443,7 @@ header{
     border-bottom: 2px solid hsl( var(--white) );
 }
 
-@media (width <= 425px){
+@media (width <= 40rem){
     .menu.underline > *:where(:not(button)){
         border-bottom: none;
         border-right: 2px solid transparent;

@@ -4,7 +4,7 @@ const menu = document.querySelector(".menu");
 
 document.addEventListener("click", (e) => {
     if (!menu.contains(e.target)){
-        menu.classList.add("hidden");
+        menu.classList.remove("appear");
         menu.setAttribute
     }
 })
@@ -12,8 +12,8 @@ document.addEventListener("click", (e) => {
 closeBtn.addEventListener("click", (e) => {
     e.stopPropagation();
     
-    if (!menu.classList.contains("hidden")){
-        menu.classList.add("hidden");
+    if (menu.classList.contains("appear")){
+        menu.classList.remove("appear");
         setAttribute("aria-expanded", false);
     }
 });
@@ -21,8 +21,8 @@ closeBtn.addEventListener("click", (e) => {
 hamburger.addEventListener("click", (e) => {
     e.stopPropagation();
 
-    if (menu.classList.contains("hidden")){
-        menu.classList.remove("hidden");
+    if (!menu.classList.contains("appear")){
+        menu.classList.add("appear");
         hamburger.setAttribute("aria-expanded", true);
     }
 });
