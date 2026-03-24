@@ -314,6 +314,28 @@ picture{
     }
 }
 
+.background-des {
+    background: url("./assets/destination/background-destination-mobile.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+@media (width > 35rem) {
+    .background-des {
+        background: url("./assets/destination/background-destination-tablet.jpg");
+        background-size: cover;
+        background-position: center;
+    }
+}
+
+@media (width > 60rem) {
+    .background-des {
+        background: url("./assets/destination/background-destination-desktop.jpg");
+        background-size: cover;
+        background-position: center;
+    }
+}
+
 /* Navigation Bar */
 
 .close{
@@ -321,7 +343,7 @@ picture{
     border: none;
     cursor: pointer;
     align-self: flex-end;
-    margin: 3rem 2rem;
+    margin: 2.5rem 1.5rem;
 }
 
 .hamburger{
@@ -365,7 +387,7 @@ header{
     transform: translateX(0);
 }
 
-@media (width > 40rem) {
+@media (width > 35rem) {
     .close,
     .hamburger {
         display: none;
@@ -411,7 +433,7 @@ header{
         height: 1px;
         z-index: 3;
         width: 100%;
-        margin-right: -2.5rem;
+        margin-right: -2rem;
         margin-left: 4rem;
     }
 
@@ -443,7 +465,7 @@ header{
     border-bottom: 2px solid hsl( var(--white) );
 }
 
-@media (width <= 40rem){
+@media (width <= 35rem){
     .menu.underline > *:where(:not(button)){
         border-bottom: none;
         border-right: 2px solid transparent;
