@@ -26,11 +26,11 @@
 
         <nav class="menu flex flow hidden underline">
             <button class="close"><img src="./assets/shared/icon-close.svg"><span class="sr-only">Menu</span></button>
-            <a href="#" aria-selected="false" class="ff-sans-cond uppercase text-white letter-spacing-2">
+            <a href="./index.html" aria-selected="false" class="ff-sans-cond uppercase text-white letter-spacing-2">
                 <span aria-hidden="true">00</span>
                 Home
             </a>
-            <a href="#" aria-selected="true" class="ff-sans-cond uppercase text-white letter-spacing-2">
+            <a href="./destination.html" aria-selected="true" class="ff-sans-cond uppercase text-white letter-spacing-2">
                 <span aria-hidden="true">01</span>
                 Destination
             </a>
@@ -45,20 +45,30 @@
         </nav>
     </header>
 
+    <span class="text-white numbered-title-tab block"><span aria-hidden="true">01</span> Pick your destination</span>
+
     <main class="container-grid" style="color:red">
-        <div>
-            <h2><span>00</span> pick your destination</h2>
+        <div class="imageCont">
+            
             <div>
                 <img id="planetImage">
             </div>
         </div>
         
-        <div>
-            <h1 id="planetName"></h1>
-            <p id="planetDescription"></p>
-            <div class="flex">
-                <p class="uppercase">Avg. Distance <span id="planetDistance" class="block"></span></p>
-                <p class="uppercase">Est. Travel Time <span id="planetTravel" class="block"></span></p>
+        <div class="flow" style="--flow-space: 2rem">
+            <div>
+                <ul class="tab flex underline">
+                    <li aria-selected="true"><button class="ff-sans-cond uppercase letter-spacing-2 fs-500 text-white" value="0">Moon</button></li>
+                    <li aria-selected="false"><button class="ff-sans-cond uppercase letter-spacing-2 fs-500 text-white" value="1">Mars</button></li>
+                    <li aria-selected="false"><button class="ff-sans-cond uppercase letter-spacing-2 fs-500 text-white" value="2">Europa</button></li>
+                    <li aria-selected="false"><button class="ff-sans-cond uppercase letter-spacing-2 fs-500 text-white" value="3">Titan</button></li>
+                </ul>
+            </div>
+            <h1 id="planetName" class="fs-800 text-white uppercase ff-serif letter-spacing-3"></h1>
+            <p id="planetDescription" class="text-accent"></p>
+            <div class="statistics flex">
+                <p class="uppercase text-accent">Avg. Distance <span id="planetDistance" class="block text-white"></span></p>
+                <p class="uppercase text-accent">Est. Travel Time <span id="planetTravel" class="block text-white"></span></p>
             </div>
         </div>
     </main>

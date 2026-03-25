@@ -37,15 +37,25 @@ const planetDescription = document.getElementById("planetDescription");
 const planetDistance = document.getElementById("planetDistance");
 const planetTravel = document.getElementById("planetTravel");
 
-async function getData() {
+const tabButtons = document.querySelectorAll(".tab > li > button");
+
+async function getData(n) {
     const response = await fetch("./data.json");
     const data = await response.json();
     
-    planetName.innerText = data.destinations[0].name;
-    planetImage.src = data.destinations[0].images.png;
-    planetDescription.innerText = data.destinations[0].description;
-    planetDistance.innerText = data.destinations[0].distance;
-    planetTravel.innerText = data.destinations[0].travel;
+    let destination = data.destinations[0 | n];
+    
+    planetName.innerText = destination.name;
+    planetImage.src = destination.images.png;
+    planetDescription.innerText = destination.description;
+    planetDistance.innerText = destination.distance;
+    planetTravel.innerText = destination.travel;
 }
 
 getData()
+tabButtons.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.target.setAttribute("aria-selected", true)
+    let tabActive = document.querySelector(`[aria-selected="true"] > button`);
+    getData(tabActive.value);
+})
