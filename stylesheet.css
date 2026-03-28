@@ -6,7 +6,7 @@
 
     /* Font Sizes */
     --fs-900: clamp(5rem, 8vw + 1rem, 9.375rem);
-    --fs-800: clamp(3.5rem, 6vw + 1rem, 6.25rem);
+    --fs-800: clamp(3.5rem, 6vw + 1rem, 8.25rem);
     --fs-700: clamp(1.5rem, 4vw + 1rem, 3.5rem);
     --fs-600: clamp(1rem, 2vw + 1rem, 2rem);
     --fs-500: clamp(0.95rem, 1vw + 1rem, 1.75rem);
@@ -163,8 +163,6 @@ picture {
 
 @media (width > 60rem) {
     .container-grid {
-        padding-bottom: 8rem;
-        align-items: end;
         text-align: left;
         grid-template-columns: minmax(0, 1fr) repeat(2, minmax(0, 40rem)) minmax(0, 1fr);
         margin: 0;
@@ -177,6 +175,26 @@ picture {
     .container-grid>*:last-child {
         grid-column: 3;
     }
+
+    .container-home{
+        padding-bottom: 8rem;
+        align-items: end;
+    }
+}
+
+.grid-destinations {
+    grid-template-areas:
+        "title"
+        "image"
+        "tabs"
+        "content"
+}
+
+
+
+.grid-destinations img {
+    grid-area: "image";
+    max-width: 70%;
 }
 
 .sr-only {
@@ -302,21 +320,7 @@ picture {
 .numbered-title span {
     margin-right: .5em;
     font-weight: 700;
-}
-
-.numbered-title-tab {
-    font-family: var(--ff-sans-cond);
-    font-size: var(--fs-600);
-    text-transform: uppercase;
-    letter-spacing: 4.72px;
-    margin-left: 11rem;
-    margin-top: 2rem;
-}
-
-.numbered-title-tab span {
-    margin-right: .5em;
-    font-weight: 700;
-    color: hsl(var(--white) / .25);
+    color: hsl( var(--white) / .25);
 }
 
 .large-button {
@@ -566,11 +570,24 @@ header {
     list-style: none;
 }
 
-.tab li>button {
-    margin-bottom: .5em;
+.tab > button {
+    padding-bottom: .5em;
 }
 
 button {
     border: none;
     background-color: transparent;
+}
+
+.line {
+    display: block;
+    position: relative;
+    background-color: hsl(var(--white) / .10);
+    height: 1px;
+    width: 100%;
+}
+
+.statistics {
+    justify-content: center;
+    margin-top: 2rem;
 }

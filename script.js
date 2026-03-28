@@ -22,7 +22,6 @@ closeBtn.addEventListener("click", (e) => {
 
 hamburger.addEventListener("click", (e) => {
     e.stopPropagation();
-
     if (!menu.classList.contains("appear")){
         menu.classList.add("appear");
         hamburger.setAttribute("aria-expanded", true);
@@ -37,25 +36,35 @@ const planetDescription = document.getElementById("planetDescription");
 const planetDistance = document.getElementById("planetDistance");
 const planetTravel = document.getElementById("planetTravel");
 
-const tabButtons = document.querySelectorAll(".tab > li > button");
+const tabButtons = document.querySelectorAll(".tab > button");
 
 async function getData(n) {
     const response = await fetch("./data.json");
     const data = await response.json();
     
-    let destination = data.destinations[0 | n];
+    let destination = data.destinations[n | 0];
     
     planetName.innerText = destination.name;
     planetImage.src = destination.images.png;
+    planetImage.setAttribute("alt", `${destination.name}`)
     planetDescription.innerText = destination.description;
     planetDistance.innerText = destination.distance;
     planetTravel.innerText = destination.travel;
 }
 
-getData()
-tabButtons.addEventListener("click", (event) => {
-    event.preventDefault();
-    event.target.setAttribute("aria-selected", true)
-    let tabActive = document.querySelector(`[aria-selected="true"] > button`);
-    getData(tabActive.value);
+getData();
+
+let buttonTabs = document.querySelectorAll(".tab button");
+
+buttonTabs.forEach(button => {
+    button.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        let currentSelection = document.querySelector(".tab [aria-selected='true'");
+        currentSelection.setAttribute("aria-selected", false);
+        event.target.setAttribute("aria-selected", true);
+
+        getData(button.value);
+    })
 })
+
