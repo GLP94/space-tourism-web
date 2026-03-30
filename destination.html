@@ -18,7 +18,7 @@
 <body class="background-des">
     <header class="flex">
         <div>
-            <img src="./assets/shared/logo.svg" class="logo" alt="Logo"></img>
+            <a href="index.html"><img src="./assets/shared/logo.svg" class="logo" alt="Logo"></img></a>
         </div>
         <button class="hamburger" aria-expanded="false">
             <img src="./assets/shared/icon-hamburger.svg">
@@ -55,7 +55,6 @@
         <img id="planetImage">
 
         <div class="tab flex underline" style="--gap: 1rem">
-
             <button aria-selected="true" class="ff-sans-cond uppercase letter-spacing-2 fs-500 text-white"
                 value="0">Moon</button>
             <button aria-selected="false" class="ff-sans-cond uppercase letter-spacing-2 fs-500 text-white"
@@ -64,22 +63,20 @@
                 value="2">Europa</button>
             <button aria-selected="false" class="ff-sans-cond uppercase letter-spacing-2 fs-500 text-white"
                 value="3">Titan</button>
-
         </div>
 
         <article>
-            <h1 id="planetName" class="fs-800 text-white uppercase ff-serif letter-spacing-3" style="font-weight: 400">
-            </h1>
+            <h2 id="planetName" class="fs-800 text-white uppercase ff-serif letter-spacing-3" style="font-weight: 400"></h2>
             <p id="planetDescription" class="text-accent"></p>
             <div class="line"></div>
             <div class="statistics flex" style="--gap: 2rem">
                 <div>
                     <h3 class="uppercase text-accent fs-200">Avg. Distance</h3>
-                    <p id="planetDistance" class="text-white fs-500 uppercase"></p>
+                    <p id="planetDistance" class="text-white fs-600 uppercase"></p>
                 </div>
                 <div>
                     <h3 class="uppercase text-accent fs-200">Est. Travel Time</h3>
-                    <p id="planetTravel" class="text-white fs-500 uppercase"></p>
+                    <p id="planetTravel" class="text-white fs-600 uppercase"></p>
                 </div>
             </div>
         </article>
