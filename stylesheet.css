@@ -198,9 +198,6 @@ picture {
         "content";
 }
 
-.grid-destinations > * {
-    max-width: 30rem;
-}
 
 @media (width > 60rem){
     .grid-destinations {
@@ -217,12 +214,10 @@ picture {
 
 .grid-destinations > h1 {
     grid-area: title;
-    margin-bottom: 3rem;
 }
 
 .grid-destinations > .tab {
     grid-area: tabs;
-    margin: 2rem 0;
 }
 
 .grid-destinations > article {
@@ -231,24 +226,30 @@ picture {
 
 @media (width > 35rem){
     .grid-destinations img {
-        grid-area: image;
         max-width: 40%;
     }
 
     .grid-destinations h1 {
         place-self: start;
-        margin-left: 0.5rem;
+        margin-left: 1rem;
+    }
+
+    .grid-destinations > article {
+        max-width: 38rem;
+        margin: 0;
     }
 }
 
 @media (width > 60rem){
     .grid-destinations img {
-        grid-area: image;
-        max-width: 70%;
+        max-width: 100%;
+        place-self: start center;
+        margin: 0;
     }
 
     .grid-destinations .tab {
         place-self: end start;
+        position: relative;
         margin: 0;
     }
 
@@ -259,6 +260,8 @@ picture {
 
     .grid-destinations > article {
         text-align: left;
+        place-self: start start;
+        max-width: 26rem;
     }
 }
 
@@ -632,23 +635,16 @@ button {
     background-color: transparent;
 }
 
-.line {
-    display: block;
-    position: relative;
-    background-color: hsl(var(--white) / .10);
-    height: 1px;
-    width: 100%;
-    margin-top: 2rem;
-}
-
-.statistics {
+.destination-statistics {
     justify-content: center;
-    margin-top: 2rem;
+    padding-top: 2rem;
     justify-content: flex-start;
+    border-top: 2px solid hsl(var(--white) / .10);
+    margin-top: 4rem;
 }
 
 @media (width <= 60rem){
-    .statistics {
+    .destination-statistics {
         flex-direction: column;
     }
 }

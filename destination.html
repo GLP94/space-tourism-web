@@ -48,35 +48,30 @@
 
 
 
-    <main class="container-grid grid-destinations text-white">
+    <main class="container-grid grid grid-destinations text-white flow" style="--gap: 2rem">
 
         <h1 class="numbered-title" style="font-weight: 400;"><span aria-hidden="true">01</span> Pick your destination</h1>
 
         <img id="planetImage">
 
         <div class="tab flex underline" style="--gap: 1rem">
-            <button aria-selected="true" class="ff-sans-cond uppercase letter-spacing-2 fs-500 text-white"
-                value="0">Moon</button>
-            <button aria-selected="false" class="ff-sans-cond uppercase letter-spacing-2 fs-500 text-white"
-                value="1">Mars</button>
-            <button aria-selected="false" class="ff-sans-cond uppercase letter-spacing-2 fs-500 text-white"
-                value="2">Europa</button>
-            <button aria-selected="false" class="ff-sans-cond uppercase letter-spacing-2 fs-500 text-white"
-                value="3">Titan</button>
+            <button aria-selected="true" class="ff-sans-cond uppercase letter-spacing-2 fs-500 text-white" value="0">Moon</button>
+            <button aria-selected="false" class="ff-sans-cond uppercase letter-spacing-2 fs-500 text-white" value="1">Mars</button>
+            <button aria-selected="false" class="ff-sans-cond uppercase letter-spacing-2 fs-500 text-white" value="2">Europa</button>
+            <button aria-selected="false" class="ff-sans-cond uppercase letter-spacing-2 fs-500 text-white" value="3">Titan</button>
         </div>
 
-        <article>
+        <article class="flow" style="--flow-space: 2rem">
             <h2 id="planetName" class="fs-800 text-white uppercase ff-serif letter-spacing-3" style="font-weight: 400"></h2>
             <p id="planetDescription" class="text-accent"></p>
-            <div class="line"></div>
-            <div class="statistics flex" style="--gap: 2rem">
+            <div class="destination-statistics flex" style="--gap: 3rem">
                 <div>
                     <h3 class="uppercase text-accent fs-200">Avg. Distance</h3>
-                    <p id="planetDistance" class="text-white fs-600 uppercase"></p>
+                    <p id="planetDistance" class="text-white fs-500 uppercase"></p>
                 </div>
                 <div>
                     <h3 class="uppercase text-accent fs-200">Est. Travel Time</h3>
-                    <p id="planetTravel" class="text-white fs-600 uppercase"></p>
+                    <p id="planetTravel" class="text-white fs-500 uppercase"></p>
                 </div>
             </div>
         </article>
