@@ -36,8 +36,6 @@ const planetDescription = document.getElementById("planetDescription");
 const planetDistance = document.getElementById("planetDistance");
 const planetTravel = document.getElementById("planetTravel");
 
-const tabButtons = document.querySelectorAll(".tab > button");
-
 async function getData(n) {
     const response = await fetch("./data.json");
     const data = await response.json();
@@ -68,3 +66,38 @@ buttonTabs.forEach(button => {
     })
 })
 
+/* Crew */
+
+const crewName = document.getElementById("crewName");
+const crewImage = document.getElementById("crewImage");
+const crewtBio = document.getElementById("crewBio");
+const crewRole = document.getElementById("crewRole");
+
+const tabCrewButtons = document.querySelectorAll(".tab-crew button");
+
+async function getCrewData(n) {
+    const response = await fetch("./data.json");
+    const data = await response.json();
+    
+    let crew = data.crew[n | 0];
+    
+    crewName.innerText = crew.name;
+    crewImage.src = crew.images.png;
+    crewImage.setAttribute("alt", `${crewName.name}`)
+    crewtBio.innerText = crew.bio;
+    crewRole.innerText = crew.role;
+}
+
+getCrewData();
+
+tabCrewButtons.forEach(button => {
+    button.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        let currentSelection = document.querySelector(".tab-crew [aria-selected='true'");
+        currentSelection.setAttribute("aria-selected", false);
+        event.target.setAttribute("aria-selected", true);
+
+        getCrewData(button.value);
+    })
+})
