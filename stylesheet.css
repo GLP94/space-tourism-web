@@ -262,7 +262,7 @@ picture {
 
 .numbered-title {
     font-family: var(--ff-sans-cond);
-    font-size: var(--fs-500);
+    font-size: var(--fs-400);
     text-transform: uppercase;
     letter-spacing: 4.72px;
 }
@@ -349,7 +349,7 @@ picture {
     background-color: var(--dark);
 }
 
-@media (width > 35rem) {
+@media (width > 40rem) {
     .background-des {
         background: url("./assets/destination/background-destination-tablet.jpg");
         background-size: cover;
@@ -360,6 +360,29 @@ picture {
 @media (width > 60rem) {
     .background-des {
         background: url("./assets/destination/background-destination-desktop.jpg");
+        background-size: cover;
+        background-position: center;
+    }
+}
+
+.background-crew {
+    background: url("./assets/crew/background-crew-mobile.jpg");
+    background-size: cover;
+    background-position: center;
+    background-color: var(--dark);
+}
+
+@media (width > 40rem) {
+    .background-crew {
+        background: url("./assets/crew/background-crew-tablet.jpg");
+        background-size: cover;
+        background-position: center;
+    }
+}
+
+@media (width > 60rem) {
+    .background-crew {
+        background: url("./assets/crew/background-crew-desktop.jpg");
         background-size: cover;
         background-position: center;
     }
@@ -416,8 +439,7 @@ header {
     transform: translateX(0);
 }
 
-@media (width > 35rem) {
-
+@media (width > 40rem) {
     .close,
     .hamburger {
         display: none;
@@ -431,8 +453,8 @@ header {
         flex-direction: row;
         height: auto;
         width: auto;
-        --gap: clamp(1.5rem, 5vw, 3rem);
-        padding: 0 clamp(2rem, 6vw, 10rem);
+        --gap: clamp(1rem, 6vw, 3rem);
+        padding: 0 clamp(2rem, 9vw, 10rem);
     }
 
     .menu a {
@@ -440,7 +462,7 @@ header {
         margin: 0;
     }
 
-    .menu a>span {
+    .menu a > span {
         display: none;
     }
 }
@@ -469,6 +491,7 @@ header {
 
     .menu {
         order: 2;
+        padding: 0 clamp(2rem, 6vw, 10rem);
     }
 
     .menu a>span {
@@ -495,7 +518,7 @@ header {
     border-bottom: 2px solid hsl(var(--white));
 }
 
-@media (width <=35rem) {
+@media (width <= 39.99rem) {
     .menu.underline>*:where(:not(button)) {
         border-bottom: none;
         border-right: 2px solid transparent;
@@ -530,7 +553,7 @@ header {
 @media (width > 60rem) {
     .container-grid {
         text-align: left;
-        grid-template-columns: minmax(0, 1fr) repeat(2, minmax(0, 40rem)) minmax(0, 1fr);
+        grid-template-columns: minmax(1rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(1rem, 1fr);
         margin: 0;
     }
 
@@ -557,7 +580,6 @@ header {
         "content";
 }
 
-
 @media (width > 60rem){
     .grid-destinations {
         justify-items: start;
@@ -565,12 +587,32 @@ header {
             ". title . ."
             ". image tabs ."
             ". image content .";
+        grid-template-columns: minmax(6rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(0, 1fr);
+    }
+}
+
+.grid-crew {
+    gap: 2rem;
+    grid-template-areas:
+        "title"
+        "des"
+        "tabs"
+        "image";
+}
+
+@media (width > 60rem){
+    .grid-crew {
+        grid-template-areas:
+            ". title image ."
+            ". des image ."
+            ". tabs image .";
+        grid-template-columns: minmax(6rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(0, 1fr);
     }
 }
 
 .grid-destinations img {
     grid-area: image;
-    max-width: 70%;
+    max-width: 50%;
 }
 
 .grid-destinations > h1 {
@@ -580,13 +622,15 @@ header {
 
 .grid-destinations > .tab {
     grid-area: tabs;
+    --gap: 2rem;
 }
 
 .grid-destinations > article {
     grid-area: content;
+    margin: 0;
 }
 
-@media (width > 35rem){
+@media (width > 40rem){
     .grid-destinations img {
         max-width: 40%;
     }
@@ -630,15 +674,6 @@ header {
     }
 }
 
-.grid-crew {
-    gap: 2rem;
-    grid-template-areas:
-        "title"
-        "image"
-        "tabs"
-        "des";
-}
-
 .grid-crew h1 {
     grid-area: title;
 }
@@ -646,24 +681,55 @@ header {
 .grid-crew img {
     grid-area: image;
     max-width: 70%;
-}
-
-@media (width <= 60rem) {
-    .grid-crew img {
-        border-bottom: 1px solid hsl(var(--white) / .25);
-    }
+    place-self: end center;
 }
 
 .grid-crew .tab-crew {
-    grid-area: tabs
+    grid-area: tabs;
+    margin-bottom: 1rem;
 }
 
-.grid-crew article {
-    grid-area: des
+.grid-crew .crewDescription {
+    grid-area: des;
+    margin-bottom: 2rem;
 }
 
+.crewDescription h2{
+    margin-bottom: 1.5rem;
+    margin-top: .5rem;
+}
+
+@media (width > 40rem) {
+    .grid-crew img {
+        max-width: 50%;
+    }
+
+    .grid-crew article {
+        max-width: 29rem;
+    }
+
+    .grid-crew h1 {
+        place-self: start;
+    }
+}
+
+@media (width > 60rem) {
+    .grid-crew img {
+        max-width: 100%;
+    }
+
+    .grid-crew article {
+        max-width: 32rem;
+        place-self: center start;
+    }
+
+    .grid-crew .tab-crew {
+        place-self: center start;
+    }
+}
 
 .tab > button {
+    font-size: var(--fs-400);
     padding-bottom: .5em;
 }
 
@@ -680,13 +746,13 @@ button {
     margin-top: 2rem;
 }
 
-@media (width >= 35rem){
+@media (width > 40rem){
     .destination-statistics {
         flex-direction: row;
     }
 }
 
-@media (width >= 60rem){
+@media (width > 60rem){
     .destination-statistics {
         justify-content: start;
     }
