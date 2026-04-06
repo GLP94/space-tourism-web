@@ -83,7 +83,7 @@ async function getCrewData(n) {
     
     crewName.innerText = crew.name;
     crewImage.src = crew.images.png;
-    crewImage.setAttribute("alt", `${crewName.name}`)
+    crewImage.setAttribute("alt", `${crew.name}`)
     crewtBio.innerText = crew.bio;
     crewRole.innerText = crew.role;
 }
@@ -101,3 +101,25 @@ tabCrewButtons.forEach(button => {
         getCrewData(button.value);
     })
 })
+
+/* Technology */
+
+const techName = document.getElementById("techName");
+const techImage = document.getElementById("techImage");
+const techDescription = document.getElementById("techDescription");
+
+const tabTechButtons = document.querySelectorAll(".tab-tech button");
+
+async function getTechData(n) {
+    const response = await fetch("./data.json");
+    const data = await response.json();
+    
+    let tech = data.technology[n | 0];
+    
+    techName.innerText = tech.name;
+    techImage.src = tech.images.portrait;
+    techImage.setAttribute("alt", `${tech.name}`)
+    techDescription.innerText = tech.description;
+}
+
+getTechData();

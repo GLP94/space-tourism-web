@@ -553,8 +553,8 @@ header {
 @media (width > 60rem) {
     .container-grid {
         text-align: left;
-        grid-template-columns: minmax(1rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(1rem, 1fr);
         margin: 0;
+        grid-template-columns: minmax(1rem, 1fr) repeat(2, minmax(0, 30rem)) minmax(1rem, 1fr);
     }
 
     .container-home>*:first-child {
@@ -584,11 +584,12 @@ header {
     .grid-destinations {
         justify-items: start;
         grid-template-areas:
-            ". title . ."
+            ". title title ."
             ". image tabs ."
             ". image content .";
-        grid-template-columns: minmax(6rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(0, 1fr);
+        grid-template-columns: minmax(1rem, 1fr) repeat(2, minmax(0, 35rem)) minmax(1rem, 1fr);
     }
+    
 }
 
 .grid-crew {
@@ -606,8 +607,35 @@ header {
             ". title image ."
             ". des image ."
             ". tabs image .";
-        grid-template-columns: minmax(6rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(0, 1fr);
+        grid-template-columns: minmax(8rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(1rem, 1fr);
     }
+}
+
+.grid-tech{
+    grid-template-areas:
+        "title"
+        "image"
+        "des"
+}
+
+@media (width > 60rem) {
+    .grid-tech{
+        grid-template-areas:
+            ". title image ."
+            ". des image ."
+    }
+}
+
+.grid-tech h1 {
+    grid-area: "title";
+}
+
+.grid-tech img {
+    grid-area: "image";
+}
+
+.grid-tech article {
+    grid-area: "des";
 }
 
 .grid-destinations img {
@@ -647,10 +675,6 @@ header {
 }
 
 @media (width > 60rem){
-    .grid-destinations{
-        grid-template-columns: minmax(3rem, 1fr) minmax(0, 40rem) 1fr minmax(3rem, 1fr);
-    }
-
     .grid-destinations img {
         max-width: 100%;
         margin: 0;
@@ -701,7 +725,7 @@ header {
 
 @media (width > 40rem) {
     .grid-crew img {
-        max-width: 50%;
+        max-width: 40%;
     }
 
     .grid-crew article {
@@ -709,7 +733,7 @@ header {
     }
 
     .grid-crew h1 {
-        place-self: start;
+        place-self: center start;
     }
 }
 
