@@ -1,4 +1,4 @@
-/* Shared */
+/* Header */
 
 const closeBtn = document.querySelector(".close");
 const hamburger = document.querySelector(".hamburger");
@@ -22,79 +22,99 @@ closeBtn.addEventListener("click", (e) => {
 
 hamburger.addEventListener("click", (e) => {
     e.stopPropagation();
+
     if (!menu.classList.contains("appear")){
         menu.classList.add("appear");
         hamburger.setAttribute("aria-expanded", true);
     }
 });
 
-/* Destination */
+/* Fetch */
 
-const planetName = document.getElementById("planetName");
-const planetImage = document.getElementById("planetImage");
-const planetDescription = document.getElementById("planetDescription");
-const planetDistance = document.getElementById("planetDistance");
-const planetTravel = document.getElementById("planetTravel");
-
-async function getData(n) {
+async function fetchedData() {
     const response = await fetch("./data.json");
+    if (!response.ok) throw new Error("Can not fetch data.");
+
     const data = await response.json();
-    
-    let destination = data.destinations[n | 0];
-    
-    planetName.innerText = destination.name;
-    planetImage.src = destination.images.png;
-    planetImage.setAttribute("alt", `${destination.name}`)
-    planetDescription.innerText = destination.description;
-    planetDistance.innerText = destination.distance;
-    planetTravel.innerText = destination.travel;
+    return data;
 }
 
-getData();
+/* Destination */
 
 let buttonTabs = document.querySelectorAll(".tab button");
+
+async function getDestinationData(n) {
+    try{
+        const data = await fetchedData();
+    
+        let destination = data.destinations[n];
+        if (!destination) return;
+
+        const planetName = document.getElementById("planetName");
+        const planetImage = document.getElementById("planetImage");
+        const planetDescription = document.getElementById("planetDescription");
+        const planetDistance = document.getElementById("planetDistance");
+        const planetTravel = document.getElementById("planetTravel");
+    
+        if (planetName) planetName.innerText = destination.name;
+        if (planetImage) planetImage.src = destination.images.png;
+        if (planetImage) planetImage.setAttribute("alt", `${destination.name}`)
+        if (planetDescription) planetDescription.innerText = destination.description;
+        if (planetDistance) planetDistance.innerText = destination.distance;
+        if (planetTravel) planetTravel.innerText = destination.travel;
+    }
+    catch(error){
+        console.error(`Error located - ${error}`);
+    }
+}
 
 buttonTabs.forEach(button => {
     button.addEventListener("click", (event) => {
         event.preventDefault();
 
-        let currentSelection = document.querySelector(".tab [aria-selected='true'");
+        const currentSelection = document.querySelector(".tab [aria-selected='true'");
         currentSelection.setAttribute("aria-selected", false);
         event.target.setAttribute("aria-selected", true);
 
-        getData(button.value);
+        getDestinationData(+button.value);
     })
 })
 
-/* Crew */
+getDestinationData(0);
 
-const crewName = document.getElementById("crewName");
-const crewImage = document.getElementById("crewImage");
-const crewtBio = document.getElementById("crewBio");
-const crewRole = document.getElementById("crewRole");
+/* Crew */
 
 const tabCrewButtons = document.querySelectorAll(".tab-crew button");
 
 async function getCrewData(n) {
-    const response = await fetch("./data.json");
-    const data = await response.json();
-    
-    let crew = data.crew[n | 0];
-    
-    crewName.innerText = crew.name;
-    crewImage.src = crew.images.png;
-    crewImage.setAttribute("alt", `${crew.name}`)
-    crewtBio.innerText = crew.bio;
-    crewRole.innerText = crew.role;
-}
+    try{
+        const data = await fetchedData();
 
-getCrewData();
+        let crew = data.crew[n];
+        if (!crew) return;
+
+        const crewName = document.getElementById("crewName");
+        const crewImage = document.getElementById("crewImage");
+        const crewtBio = document.getElementById("crewBio");
+        const crewRole = document.getElementById("crewRole");
+    
+    
+        if (crewName) crewName.innerText = crew.name;
+        if (crewImage) crewImage.src = crew.images.png;
+        if (crewImage) crewImage.setAttribute("alt", `${crew.name}`)
+        if (crewtBio) crewtBio.innerText = crew.bio;
+        if (crewRole) crewRole.innerText = crew.role;
+    }
+    catch(error){
+        console.error(`Error located - ${error}`);
+    }
+}
 
 tabCrewButtons.forEach(button => {
     button.addEventListener("click", (event) => {
         event.preventDefault();
 
-        let currentSelection = document.querySelector(".tab-crew [aria-selected='true'");
+        const currentSelection = document.querySelector(".tab-crew [aria-selected='true'");
         currentSelection.setAttribute("aria-selected", false);
         event.target.setAttribute("aria-selected", true);
 
@@ -102,24 +122,29 @@ tabCrewButtons.forEach(button => {
     })
 })
 
+getCrewData(0);
+
 /* Technology */
 
-const techName = document.getElementById("techName");
-const techImage = document.getElementById("techImage");
-const techDescription = document.getElementById("techDescription");
-
-const tabTechButtons = document.querySelectorAll(".tab-tech button");
-
 async function getTechData(n) {
-    const response = await fetch("./data.json");
-    const data = await response.json();
+    try {
+        const data = await fetchedData();
     
-    let tech = data.technology[n | 0];
+        let tech = data.technology[n];
+        if (!tech) return;
+
+        const techName = document.getElementById("techName");
+        const techImage = document.getElementById("techImage");
+        const techDescription = document.getElementById("techDescription");
     
-    techName.innerText = tech.name;
-    techImage.src = tech.images.portrait;
-    techImage.setAttribute("alt", `${tech.name}`)
-    techDescription.innerText = tech.description;
+        if (techName) techName.innerText = tech.name;
+        if (techImage) techImage.src = tech.images.portrait;
+        if (techImage) techImage.setAttribute("alt", `${tech.name}`)
+        if (techDescription) techDescription.innerText = tech.description;
+    }
+    catch(error){
+        console.error(`Error located - ${error}`);
+    }
 }
 
-getTechData();
+getTechData(0);
