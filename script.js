@@ -29,7 +29,7 @@ hamburger.addEventListener("click", (e) => {
     }
 });
 
-/* Fetch */
+/* Data */
 
 async function fetchedData() {
     const response = await fetch("./data.json");

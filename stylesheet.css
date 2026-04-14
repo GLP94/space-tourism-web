@@ -605,12 +605,13 @@ header {
 
 @media (width > 60rem){
     .grid-destinations {
+        gap: 0;
         justify-items: start;
         grid-template-areas:
             ". title title ."
             ". image tabs ."
             ". image content .";
-        grid-template-columns: minmax(5rem, 1fr) minmax(15rem, 36rem) minmax(5rem, 30rem) minmax(5rem, 1fr);
+        grid-template-columns: minmax(5rem, 1fr) minmax(15rem, 40rem) minmax(5rem, 30rem) minmax(5rem, 1fr);
     }
     
 }
@@ -629,7 +630,7 @@ header {
             ". title image ."
             ". des image ."
             ". tabs image .";
-        grid-template-columns: minmax(5rem, 1fr) minmax(0, 36rem) minmax(10rem, 30rem) minmax(5rem, 1fr);
+        grid-template-columns: minmax(5rem, 1fr) minmax(0, 40rem) minmax(10rem, 30rem) minmax(5rem, 1fr);
     }
 }
 
@@ -646,7 +647,7 @@ header {
         grid-template-areas:
             ". title image ."
             ". des image .";
-        grid-template-columns: minmax(5rem, 1fr) minmax(0, 40rem) minmax(0, 30rem) minmax(0, 0);
+        grid-template-columns: minmax(5rem, 1fr) minmax(0, 40rem) minmax(10rem, 41rem) minmax(0, 0);
     }
 }
 
@@ -781,7 +782,6 @@ header {
 @media (width > 60rem){
     .grid-tech img {
         place-self: center end;
-        margin: 0 4rem;
     }
 
     .grid-tech h1 {
@@ -825,7 +825,7 @@ button {
     }
 }
 
-/* Crew */
+/* Tabs */
 
 .tab-crew > * {
     padding: .5rem;
@@ -841,4 +841,21 @@ button {
 .grid-crew article p:first-child {
     color: hsl( var(--white) / .25);
     margin-bottom: 0;
+}
+
+.tab-tech > *{
+    border-radius: 50%;
+    padding: 2rem;
+    aspect-ratio: 1;
+    border: 1px solid hsl(var(--white));
+    background-color: transparent;
+}
+
+.tab-tech > [aria-selected='true'] {
+    background-color: hsl( var(--white));
+}
+
+.grid-tech article {
+    flex-direction: row;
+    justify-content: end;
 }
