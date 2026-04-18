@@ -37,7 +37,7 @@ async function fetchedData() {
 
     const data = await response.json();
     return data;
-}
+};
 
 /* Destination */
 
@@ -66,7 +66,7 @@ async function getDestinationData(n) {
     catch(error){
         console.error(`Error located - ${error}`);
     }
-}
+};
 
 buttonTabs.forEach(button => {
     button.addEventListener("click", (event) => {
@@ -78,7 +78,7 @@ buttonTabs.forEach(button => {
 
         getDestinationData(+button.value);
     })
-})
+});
 
 getDestinationData(0);
 
@@ -108,7 +108,7 @@ async function getCrewData(n) {
     catch(error){
         console.error(`Error located - ${error}`);
     }
-}
+};
 
 tabCrewButtons.forEach(button => {
     button.addEventListener("click", (event) => {
@@ -120,11 +120,13 @@ tabCrewButtons.forEach(button => {
 
         getCrewData(button.value);
     })
-})
+});
 
 getCrewData(0);
 
 /* Technology */
+
+const tabTechButtons = document.querySelectorAll(".tab-tech button");
 
 async function getTechData(n) {
     try {
@@ -138,8 +140,16 @@ async function getTechData(n) {
         const techDescription = document.getElementById("techDescription");
     
         if (techName) techName.innerText = tech.name;
-        if (techImage) techImage.src = tech.images.portrait;
-        if (techImage) techImage.setAttribute("alt", `${tech.name}`)
+        
+
+        if (techImage) {
+            window.innerWidth > 960
+            ? techImage.src = tech.images.portrait
+            : techImage.src = tech.images.landscape
+
+            techImage.setAttribute("alt", `${tech.name}`)
+        }
+
         if (techDescription) techDescription.innerText = tech.description;
     }
     catch(error){
@@ -148,3 +158,16 @@ async function getTechData(n) {
 }
 
 getTechData(0);
+
+tabTechButtons.forEach(button => {
+    button.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        const currentSelection = document.querySelector(".tab-tech [aria-selected='true']");
+        currentSelection.setAttribute("aria-selected", false);
+        event.target.setAttribute("aria-selected", true);
+
+        getTechData(button.value);
+    })
+});
+

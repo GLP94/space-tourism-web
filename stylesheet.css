@@ -630,7 +630,7 @@ header {
             ". title image ."
             ". des image ."
             ". tabs image .";
-        grid-template-columns: minmax(5rem, 1fr) minmax(0, 40rem) minmax(10rem, 30rem) minmax(5rem, 1fr);
+        grid-template-columns: minmax(2rem, 1fr) minmax(0, 40rem) minmax(10rem, 30rem) minmax(2rem, 1fr);
     }
 }
 
@@ -647,7 +647,7 @@ header {
         grid-template-areas:
             ". title image ."
             ". des image .";
-        grid-template-columns: minmax(5rem, 1fr) minmax(0, 40rem) minmax(10rem, 41rem) minmax(0, 0);
+        grid-template-columns: minmax(5rem, 1fr) minmax(15rem, 40rem) minmax(15rem, 50rem) minmax(0, 0);
     }
 }
 
@@ -790,6 +790,7 @@ header {
 
     .grid-tech article {
         place-self: start start;
+        max-width: 36rem;
     }
 }
 
@@ -843,19 +844,36 @@ button {
     margin-bottom: 0;
 }
 
+.tab-tech {
+    flex-direction: column;
+    width: 15rem;
+}
+
 .tab-tech > *{
     border-radius: 50%;
-    padding: 2rem;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     aspect-ratio: 1;
     border: 1px solid hsl(var(--white));
     background-color: transparent;
+    overflow: hidden;
+    color: hsl( var(--white));
+    font-size: 2rem;
+}
+
+@media (width > 60rem) {
+    .tab-tech > *{
+        margin-right: 2rem;
+    }
+
+    .tab-tech > *:where(:not(:last-child)){
+        margin-bottom: 2rem;
+    }
 }
 
 .tab-tech > [aria-selected='true'] {
     background-color: hsl( var(--white));
-}
-
-.grid-tech article {
-    flex-direction: row;
-    justify-content: end;
+    color: hsl( var(--dark));
 }
