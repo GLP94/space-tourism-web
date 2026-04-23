@@ -128,6 +128,19 @@ getCrewData(0);
 
 const tabTechButtons = document.querySelectorAll(".tab-tech button");
 
+function imageUpdate(tech) {
+    const techImage = document.getElementById("techImage");
+
+    if (window.innerWidth > 960){
+        techImage.src = tech.images.portrait;
+    }
+    else{
+        techImage.src = tech.images.landscape;
+    }
+}
+
+let currentTech = null;
+
 async function getTechData(n) {
     try {
         const data = await fetchedData();
@@ -135,20 +148,15 @@ async function getTechData(n) {
         let tech = data.technology[n];
         if (!tech) return;
 
+        currentTech = tech;
+
         const techName = document.getElementById("techName");
         const techImage = document.getElementById("techImage");
         const techDescription = document.getElementById("techDescription");
     
         if (techName) techName.innerText = tech.name;
         
-
-        if (techImage) {
-            window.innerWidth > 960
-            ? techImage.src = tech.images.portrait
-            : techImage.src = tech.images.landscape
-
-            techImage.setAttribute("alt", `${tech.name}`)
-        }
+        imageUpdate(tech)
 
         if (techDescription) techDescription.innerText = tech.description;
     }
@@ -171,3 +179,6 @@ tabTechButtons.forEach(button => {
     })
 });
 
+window.addEventListener("resize", () => {
+    if (currentTech) imageUpdate(currentTech)
+})

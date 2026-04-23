@@ -636,6 +636,7 @@ header {
 
 .grid-tech{
     gap: 0;
+    margin: 0;
     grid-template-areas:
         "title"
         "image"
@@ -647,7 +648,7 @@ header {
         grid-template-areas:
             ". title image ."
             ". des image .";
-        grid-template-columns: minmax(5rem, 1fr) minmax(15rem, 40rem) minmax(15rem, 50rem) minmax(0, 0);
+        grid-template-columns: minmax(9rem, 1fr) minmax(0, 56rem) minmax(10rem, 40rem) minmax(0, 0);
     }
 }
 
@@ -769,6 +770,7 @@ header {
 
 .grid-tech h1 {
     grid-area: title;
+    margin: 2rem 0;
 }
 
 .grid-tech img {
@@ -777,6 +779,15 @@ header {
 
 .grid-tech article {
     grid-area: des;
+    flex-direction: column;
+    max-width: 36rem;
+    margin: 1rem 1rem 4rem 1rem;
+}
+
+@media (width > 40rem){
+    .grid-tech h1{
+        place-self: end center;
+    }
 }
 
 @media (width > 60rem){
@@ -786,11 +797,14 @@ header {
 
     .grid-tech h1 {
         place-self: start start;
+        margin: 0;
     }
 
     .grid-tech article {
         place-self: start start;
+        flex-direction: row;
         max-width: 36rem;
+        margin: 0;
     }
 }
 
@@ -845,8 +859,10 @@ button {
 }
 
 .tab-tech {
-    flex-direction: column;
-    width: 15rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin: 1rem 0;
 }
 
 .tab-tech > *{
@@ -861,11 +877,12 @@ button {
     overflow: hidden;
     color: hsl( var(--white));
     font-size: 2rem;
+    margin-right: 1rem;
 }
 
 @media (width > 60rem) {
-    .tab-tech > *{
-        margin-right: 2rem;
+    .tab-tech{
+        flex-direction: column;
     }
 
     .tab-tech > *:where(:not(:last-child)){
